@@ -16,16 +16,19 @@ public class Vendedor extends AbstractPessoa {
 
     private String login;
     private String senha;
+    private int qtdVendasRealizadas;
 
     public Vendedor() {
         this.login = "";
         this.senha  = "";
+        this.qtdVendasRealizadas = 0;
     }
 
-    public Vendedor(String login, String senha, String nome, String cpf, Date dataNasc) {
+    public Vendedor(String login, String senha, String nome, String cpf, Date dataNasc, int qtdVendasRealizadas) {
         super(nome, cpf, dataNasc);
         this.login = login;
         this.senha = senha;
+        this.qtdVendasRealizadas = qtdVendasRealizadas;
     }
     
     
@@ -56,6 +59,24 @@ public class Vendedor extends AbstractPessoa {
      */
     public void setSenha(String senha) {
         this.senha = senha;
+    }
+
+    /**
+     * @return the qtdVendasRealizadas
+     */
+    public int getQtdVendasRealizadas() {
+        return qtdVendasRealizadas;
+    }
+
+    /**
+     * @param qtdVendasRealizadas the qtdVendasRealizadas to set
+     */
+    public void setQtdVendasRealizadas(int qtdVendasRealizadas) {
+        this.qtdVendasRealizadas = qtdVendasRealizadas;
+    }
+    
+    public void incrementarQuantidadeDeVendas(){
+        this.qtdVendasRealizadas++;
     }
 
 }

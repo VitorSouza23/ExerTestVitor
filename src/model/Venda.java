@@ -73,5 +73,21 @@ public class Venda {
     public void setVendedor(Vendedor vendedor) {
         this.vendedor = vendedor;
     }
+    
+    public double calcularValorDaVenda(){ 
+        if(this.produtos.isEmpty()){
+            throw new Error("Lista de produtos vazia");
+        }
+        
+        if(this.cliente == null || this.vendedor == null){
+             throw new Error("Componentes da compra vazios");
+        }
+        
+        double valorVenda = 0;
+        for(Produto produto : this.produtos){
+            valorVenda += produto.calularValorFinal();
+        }
+        return valorVenda;
+    }
 
 }

@@ -52,6 +52,9 @@ public class Produto {
      * @param quantidade the quantidade to set
      */
     public void setQuantidade(int quantidade) {
+        if(quantidade < 0){
+            throw new IllegalArgumentException("Não pode haver quantidade negativa!");
+        }
         this.quantidade = quantidade;
     }
 
@@ -66,7 +69,14 @@ public class Produto {
      * @param valor the valor to set
      */
     public void setValor(double valor) {
+        if(valor < 0){
+            throw new IllegalArgumentException("Não pode haver valor negativo!");
+        }
         this.valor = valor;
+    }
+    
+    public double calularValorFinal(){
+        return this.valor * this.quantidade;
     }
 
 }

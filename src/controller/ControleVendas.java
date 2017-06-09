@@ -35,8 +35,41 @@ public class ControleVendas {
         if(cliente.getCartaoDeCredito().isEmpty()){
             return false;
         }
+        Venda venda = new Venda(cliente, produtos, vendedor);
+        try{
+            cliente.subtrairDoSaldo(venda.calcularValorDaVenda());
+        }catch(Error e){
+            return false;
+        }
+        vendedor.incrementarQuantidadeDeVendas();
+       return  this.getVendas().add(venda);
+    }
+    
+    
+    
+    public boolean removerVenda(Venda venda){
+        if(venda == null){
+            throw new IllegalArgumentException("Parametros invaĺidos!");
+        }
+        if(this.vendas.isEmpty()){
+            throw new Error("Lista de vendas Vazia!");
+        }
         
-       return  this.vendas.add(new Venda(cliente, produtos, vendedor));
+        return this.getVendas().remove(venda);
+    }
+
+    /**
+     * @return the vendas
+     */
+    public List<Venda> getVendas() {
+        return vendas;
+    }
+
+    /**
+     * @param vendas the vendas to set
+     */
+    public void setVendas(List<Venda> vendas) {
+        this.vendas = vendas;
     }
     
 }
